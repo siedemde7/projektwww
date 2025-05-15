@@ -1,0 +1,28 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #f0f0f0;
+        --bg-color: #121212;
+        --light-gray: #1e1e1e;
+        --dark-gray: #aaa;
+    }
+    
+    body.dark-mode {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+    
+    .character-card, .house-card {
+        background-color: #1e1e1e;
+        border: 1px solid #333;
+    }
+    
+    .navbar {
+        background-color: rgba(30, 30, 30, 0.9);
+    }
+    
+    input, textarea, select {
+        background-color: #333;
+        color: white;
+        border-color: #555;
+    }
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Świat Harry'ego Pottera | Magiczny Portal</title>
+    <meta name="description" content="Odkryj magiczny świat Harry'ego Pottera - postacie, domy, zaklęcia i więcej!">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="js/main.js" defer></script>
+    <script src="js/forms.js" defer></script>
+</head>
+<body>
+    <!-- Nawigacja -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/images/logo.svg" alt="Logo Harry Potter" width="60">
+                <span>Magiczny Portal</span>
+            </div>
+            
+            <!-- Menu mobilne -->
+            <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Główne menu -->
+            <ul class="nav-menu">
+                <li><a href="#home">Strona Główna</a></li>
+                <li class="dropdown">
+                    <button class="dropdown-btn">Postacie <span class="arrow">▼</span></button>
+                    <ul class="dropdown-content">
+                        <li><a href="#characters-main">Główne</a></li>
+                        <li><a href="#characters-secondary">Drugoplanowe</a></li>
+                        <li><a href="#characters-villains">Czarnoksiężnicy</a></li>
+                    </ul>
+                </li>
+                <li><a href="#houses">Domy Hogwartu</a></li>
+                <li><a href="#spells">Zaklęcia</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            
+            <!-- Tryb ciemny/jasny -->
+            <button class="theme-toggle" aria-label="Przełącz tryb ciemny/jasny">
+                <span class="sun">☀️</span>
+                <span class="moon">🌙</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Witaj w Świecie Harry'ego Pottera</h1>
+            <p class="hero-subtitle">Odkryj magię, która czeka za stronami książek</p>
+            <button class="cta-button">Rozpocznij Przygodę</button>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Sekcja postaci -->
+    <section class="characters-section" id="characters">
+        <h2>Postacie</h2>
+        <div class="search-filter">
+            <input type="text" id="character-search" placeholder="Wyszukaj postać...">
+            <select id="house-filter">
+                <option value="">Wszystkie domy</option>
+                <option value="Gryffindor">Gryffindor</option>
+                <option value="Slytherin">Slytherin</option>
+                <option value="Hufflepuff">Hufflepuff</option>
+                <option value="Ravenclaw">Ravenclaw</option>
+            </select>
+            <button id="sort-characters">Sortuj A-Z</button>
+        </div>
+        
+        <div class="characters-grid" id="characters-container">
+            <!-- Postacie będą ładowane dynamicznie z API -->
+        </div>
+    </section>
+
+    <!-- Sekcja domów Hogwartu -->
+    <section class="houses-section" id="houses">
+        <h2>Domy Hogwartu</h2>
+        <div class="houses-container">
+            <!-- Karuzela z domami -->
+            <div class="house-carousel">
+                <div class="house-card" data-house="Gryffindor">
+                    <div class="house-banner"></div>
+                    <h3>Gryffindor</h3>
+                    <p>Odwaga, śmiałość, rycerskość</p>
+                </div>
+                <!-- Pozostałe domy -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja zaklęć -->
+    <section class="spells-section" id="spells">
+        <h2>Zaklęcia</h2>
+        <div class="spells-accordion">
+            <!-- Akordeon z zaklęciami -->
+            <div class="accordion-item">
+                <button class="accordion-btn">Zaklęcia obronne</button>
+                <div class="accordion-content">
+                    <!-- Zawartość będzie ładowana dynamicznie -->
+                </div>
+            </div>
+            <!-- Więcej kategorii zaklęć -->
+        </div>
+    </section>
+
+    <!-- Sekcja quizu -->
+    <section class="quiz-section" id="quiz">
+        <h2>Sprawdź swoją wiedzę</h2>
+        <form id="quiz-form" class="quiz-form">
+            <!-- Pytania quizu będą generowane dynamicznie -->
+            <div class="quiz-results" id="quiz-results"></div>
+            <button type="submit" class="submit-btn">Sprawdź odpowiedzi</button>
+        </form>
+    </section>
+
+    <!-- Sekcja kontaktowa -->
+    <section class="contact-section" id="contact">
+        <h2>Skontaktuj się z nami</h2>
+        <form id="contact-form" class="contact-form">
+            <div class="form-group">
+                <label for="name">Imię:</label>
+                <input type="text" id="name" name="name" required>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="house">Twój dom:</label>
+                <select id="house" name="house">
+                    <option value="">-- Wybierz --</option>
+                    <option value="Gryffindor">Gryffindor</option>
+                    <option value="Slytherin">Slytherin</option>
+                    <option value="Hufflepuff">Hufflepuff</option>
+                    <option value="Ravenclaw">Ravenclaw</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Wiadomość:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <span class="error-message"></span>
+            </div>
+            
+            <button type="submit" class="submit-btn">Wyślij</button>
+        </form>
+    </section>
+
+    <!-- Stopka -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>O stronie</h3>
+                <p>Portal fanowski poświęcony światu Harry'ego Pottera.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Szybkie linki</h3>
+                <ul>
+                    <li><a href="#characters">Postacie</a></li>
+                    <li><a href="#houses">Domy</a></li>
+                    <li><a href="#spells">Zaklęcia</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Social Media</h3>
+                <div class="social-icons">
+                    <!-- Ikony social media -->
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Świat Harry'ego Pottera. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="character-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="modal-body">
+                <!-- Zawartość modala będzie ładowana dynamicznie -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/animations.js" defer></script>
+</body>
+</html>
