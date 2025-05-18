@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Świat Harry'ego Pottera | Magiczny Portal</title>
@@ -9,8 +10,7 @@
     <link rel="stylesheet" href="css/dark-mode.css" media="(prefers-color-scheme: dark)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="js/main.js" defer></script>
-    <script src="js/forms.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Nawigacja -->
@@ -20,32 +20,17 @@
                 <img src="assets/images/logo.svg" alt="Logo Harry Potter" width="60">
                 <span>Magiczny Portal</span>
             </div>
-            
-            <!-- Menu mobilne -->
-            <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
             </button>
-            
-            <!-- Główne menu -->
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home">Strona Główna</a></li>
-                <li class="dropdown">
-                    <button class="dropdown-btn">Postacie <span class="arrow">▼</span></button>
-                    <ul class="dropdown-content">
-                        <li><a href="#characters-main">Główne</a></li>
-                        <li><a href="#characters-secondary">Drugoplanowe</a></li>
-                        <li><a href="#characters-villains">Czarnoksiężnicy</a></li>
-                    </ul>
-                </li>
+                <li><a href="#characters">Postacie</a></li>
                 <li><a href="#houses">Domy Hogwartu</a></li>
                 <li><a href="#spells">Zaklęcia</a></li>
                 <li><a href="#quiz">Quiz</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
-            
-            <!-- Tryb ciemny/jasny -->
             <button class="theme-toggle" aria-label="Przełącz tryb ciemny/jasny">
                 <span class="sun">☀️</span>
                 <span class="moon">🌙</span>
@@ -58,10 +43,7 @@
         <div class="hero-content">
             <h1 class="hero-title">Witaj w Świecie Harry'ego Pottera</h1>
             <p class="hero-subtitle">Odkryj magię, która czeka za stronami książek</p>
-            <button class="cta-button">Rozpocznij Przygodę</button>
-        </div>
-        <div class="scroll-indicator">
-            <span></span>
+            <button class="cta-button" onclick="location.href='#characters'">Rozpocznij Przygodę</button>
         </div>
     </section>
 
@@ -79,9 +61,8 @@
             </select>
             <button id="sort-characters">Sortuj A-Z</button>
         </div>
-        
-        <div class="characters-grid" id="characters-container">
-            <!-- Postacie będą ładowane dynamicznie z API -->
+        <div class="characters-container" id="characters-container">
+            <div class="loading-message">Ładowanie postaci...</div>
         </div>
     </section>
 
@@ -89,14 +70,23 @@
     <section class="houses-section" id="houses">
         <h2>Domy Hogwartu</h2>
         <div class="houses-container">
-            <!-- Karuzela z domami -->
             <div class="house-carousel">
-                <div class="house-card" data-house="Gryffindor">
-                    <div class="house-banner"></div>
+                <div class="house-card gryffindor">
                     <h3>Gryffindor</h3>
                     <p>Odwaga, śmiałość, rycerskość</p>
                 </div>
-                <!-- Pozostałe domy -->
+                <div class="house-card slytherin">
+                    <h3>Slytherin</h3>
+                    <p>Ambicja, przebiegłość, determinacja</p>
+                </div>
+                <div class="house-card hufflepuff">
+                    <h3>Hufflepuff</h3>
+                    <p>Wierność, sprawiedliwość, pracowitość</p>
+                </div>
+                <div class="house-card ravenclaw">
+                    <h3>Ravenclaw</h3>
+                    <p>Inteligencja, kreatywność, mądrość</p>
+                </div>
             </div>
         </div>
     </section>
@@ -105,25 +95,25 @@
     <section class="spells-section" id="spells">
         <h2>Zaklęcia</h2>
         <div class="spells-accordion">
-            <!-- Akordeon z zaklęciami -->
             <div class="accordion-item">
                 <button class="accordion-btn">Zaklęcia obronne</button>
-                <div class="accordion-content">
-                    <!-- Zawartość będzie ładowana dynamicznie -->
-                </div>
+                <div class="accordion-content"><p>Zawartość będzie ładowana dynamicznie</p></div>
             </div>
-            <!-- Więcej kategorii zaklęć -->
+            <div class="accordion-item">
+                <button class="accordion-btn">Zaklęcia ofensywne</button>
+                <div class="accordion-content"><p>Zawartość będzie ładowana dynamicznie</p></div>
+            </div>
         </div>
     </section>
 
     <!-- Sekcja quizu -->
-    <section class="quiz-section" id="quiz">
+    <section class="quiz-section scroll-animation" id="quiz">
         <h2>Sprawdź swoją wiedzę</h2>
-        <form id="quiz-form" class="quiz-form">
-            <!-- Pytania quizu będą generowane dynamicznie -->
-            <div class="quiz-results" id="quiz-results"></div>
-            <button type="submit" class="submit-btn">Sprawdź odpowiedzi</button>
-        </form>
+    <form id="quiz-form" class="quiz-form">
+        <div id="quiz-questions"></div>
+        <div class="quiz-results" id="quiz-results"></div>
+        <button type="submit" class="submit-btn">Sprawdź odpowiedzi</button>
+    </form>
     </section>
 
     <!-- Sekcja kontaktowa -->
@@ -135,16 +125,14 @@
                 <input type="text" id="name" name="name" required>
                 <span class="error-message"></span>
             </div>
-            
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 <span class="error-message"></span>
             </div>
-            
             <div class="form-group">
-                <label for="house">Twój dom:</label>
-                <select id="house" name="house">
+                <label for="contact-house">Twój dom:</label>
+                <select id="contact-house" name="house">
                     <option value="">-- Wybierz --</option>
                     <option value="Gryffindor">Gryffindor</option>
                     <option value="Slytherin">Slytherin</option>
@@ -152,13 +140,11 @@
                     <option value="Ravenclaw">Ravenclaw</option>
                 </select>
             </div>
-            
             <div class="form-group">
                 <label for="message">Wiadomość:</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
                 <span class="error-message"></span>
             </div>
-            
             <button type="submit" class="submit-btn">Wyślij</button>
         </form>
     </section>
@@ -181,7 +167,9 @@
             <div class="footer-section">
                 <h3>Social Media</h3>
                 <div class="social-icons">
-                    <!-- Ikony social media -->
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="Instagram">IG</a>
                 </div>
             </div>
         </div>
@@ -194,14 +182,15 @@
     <div class="modal" id="character-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <div class="modal-body" id="modal-body">
-                <!-- Zawartość modala będzie ładowana dynamicznie -->
-            </div>
+            <div class="modal-body" id="modal-body"></div>
         </div>
     </div>
 
-    <script src="js/main.js" defer></script>
+    <!-- Scripts -->
     <script src="js/api.js" defer></script>
+    <script src="js/forms.js" defer></script>
+    <script src="js/main.js" defer></script>
     <script src="js/animations.js" defer></script>
+    
 </body>
 </html>
